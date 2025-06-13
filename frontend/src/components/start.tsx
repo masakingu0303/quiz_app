@@ -1,5 +1,5 @@
 type StartProps = {
-    startQuiz: () => void;  // 関数型にする
+    startQuiz: () => void;  
   };
   
   const Start = ({ startQuiz }: StartProps) => {
