@@ -6,6 +6,7 @@ import Result from "./components/result";
 const App = () => {
   const [screen, setScreen] = useState<"start" | "quiz" | "result">("start");
   const [isCorrect, setIsCorrect] = useState<boolean | null>(null);
+  const [time, setTime] = useState(10);
   
   const startQuiz = () => {
     setIsCorrect(null);
@@ -15,7 +16,8 @@ const App = () => {
   const finishQuiz = (answer: string) => {
     const correctAnswer = 'ブルーロック'
     setIsCorrect(answer === correctAnswer);
-    setScreen("result");
+    setTime(10);
+    setScreen('result');
   }
 
   const restartQuiz = () => setScreen("start");
@@ -23,7 +25,7 @@ const App = () => {
   return (
     <>
     {screen === 'start' &&   <Start startQuiz={startQuiz}/>}
-    {screen === 'quiz' &&   <Quiz finishQuiz={finishQuiz}/>}
+    {screen === 'quiz' &&   <Quiz finishQuiz={finishQuiz} time={time} setTime={setTime}/>}
     {screen === 'result' &&   <Result restartQuiz={restartQuiz} isCorrect={isCorrect}/>}
     </>
   )
